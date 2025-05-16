@@ -11,93 +11,123 @@
 <body>
   <div class="container">
     <div class="overlay"></div>
-    <header>
-      <h1>MEMENTO MORI</h1>
-      <p class="subtitle">Remember that you must die <i class="fas fa-skull"></i></p>
-    </header>
+    
+    <main>
+      <header>
+        <h1>MEMENTO MORI</h1>
+        <p class="subtitle">Remember that you must die <i class="fas fa-skull"></i></p>
+      </header>
 
-    <div id="setup-screen" class="screen active">
-      <form id="life-form">
-        <div class="form-group">
-          <label for="birthYear"><i class="fas fa-birthday-cake"></i> Year of Birth</label>
-          <input type="number" id="birthYear" required min="1900" max="2023">
-        </div>
-        <div class="form-group">
-          <label for="customDeath"><i class="fas fa-hourglass-end"></i> Set Custom Death Year</label>
-          <input type="checkbox" id="customDeath">
-        </div>
-        <div class="form-group" id="deathYearGroup" style="display: none;">
-          <label for="deathYear"><i class="fas fa-calendar-times"></i> Expected Year of Death</label>
-          <input type="number" id="deathYear" min="2023" max="2123">
-        </div>
-        <button type="submit" class="btn">
-          <span>Begin Countdown</span>
-          <i class="fas fa-clock"></i>
-        </button>
-      </form>
-    </div>
+      <div id="setup-screen" class="screen active">
+        <form id="life-form">
+          <div class="form-group">
+            <label for="birthYear">
+              <i class="fas fa-birthday-cake"></i> Year of Birth
+            </label>
+            <input 
+              type="number" 
+              id="birthYear" 
+              required 
+              min="1900" 
+              max="2023"
+              placeholder="Enter birth year"
+            >
+          </div>
+          
+          <div class="form-group">
+            <label for="customDeath" class="checkbox-label">
+              <input type="checkbox" id="customDeath">
+              <span><i class="fas fa-hourglass-end"></i> Set Custom Death Year</span>
+            </label>
+          </div>
+          
+          <div class="form-group hidden" id="deathYearGroup">
+            <label for="deathYear">
+              <i class="fas fa-calendar-times"></i> Expected Year of Death
+            </label>
+            <input 
+              type="number" 
+              id="deathYear" 
+              min="2023" 
+              max="2123"
+              placeholder="Enter expected death year"
+            >
+          </div>
+          
+          <button type="submit" class="btn">
+            <span>Begin Countdown</span>
+            <i class="fas fa-clock"></i>
+          </button>
+        </form>
+      </div>
 
-    <div id="timer-screen" class="screen">
-      <div class="countdown">
-        <div class="time-unit">
-          <span id="years">0</span>
-          <label>Years</label>
-          <i class="fas fa-calendar-alt"></i>
+      <div id="timer-screen" class="screen">
+        <div class="countdown">
+          <div class="time-unit">
+            <span id="years">0</span>
+            <label>Years</label>
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="time-unit">
+            <span id="months">0</span>
+            <label>Months</label>
+            <i class="fas fa-moon"></i>
+          </div>
+          <div class="time-unit">
+            <span id="days">0</span>
+            <label>Days</label>
+            <i class="fas fa-sun"></i>
+          </div>
+          <div class="time-unit">
+            <span id="hours">0</span>
+            <label>Hours</label>
+            <i class="fas fa-hourglass-half"></i>
+          </div>
+          <div class="time-unit">
+            <span id="minutes">0</span>
+            <label>Minutes</label>
+            <i class="fas fa-stopwatch"></i>
+          </div>
+          <div class="time-unit">
+            <span id="seconds">0</span>
+            <label>Seconds</label>
+            <i class="fas fa-clock"></i>
+          </div>
         </div>
-        <div class="time-unit">
-          <span id="months">0</span>
-          <label>Months</label>
-          <i class="fas fa-moon"></i>
+        
+        <div class="progress-container">
+          <div class="progress-label">Life Progress</div>
+          <div class="progress-bar-wrapper">
+            <div id="progress-bar"></div>
+          </div>
         </div>
-        <div class="time-unit">
-          <span id="days">0</span>
-          <label>Days</label>
-          <i class="fas fa-sun"></i>
-        </div>
-        <div class="time-unit">
-          <span id="hours">0</span>
-          <label>Hours</label>
-          <i class="fas fa-hourglass-half"></i>
-        </div>
-        <div class="time-unit">
-          <span id="minutes">0</span>
-          <label>Minutes</label>
-          <i class="fas fa-stopwatch"></i>
-        </div>
-        <div class="time-unit">
-          <span id="seconds">0</span>
-          <label>Seconds</label>
-          <i class="fas fa-clock"></i>
+
+        <div class="goals-section">
+          <h2><i class="fas fa-tasks"></i> Before you die, you must...</h2>
+          <div class="goal-input-container">
+            <input 
+              type="text" 
+              id="goal-input" 
+              placeholder="Enter your goal"
+              maxlength="100"
+            >
+            <button id="save-goal" class="btn">
+              <i class="fas fa-save"></i>
+              <span>Save Goal</span>
+            </button>
+          </div>
+          <div id="saved-goals"></div>
         </div>
       </div>
-      <div class="progress-container">
-        <div id="progress-bar"></div>
+
+      <div class="quotes">
+        <i class="fas fa-quote-left"></i>
+        <p id="quote"></p>
+        <i class="fas fa-quote-right"></i>
       </div>
-    </div>
-
-    <div class="goals-section">
-      <h2><i class="fas fa-tasks"></i> Before you die, you must...</h2>
-      <div class="goal-input-container">
-        <input type="text" id="goal-input" placeholder="Enter your goal">
-        <button id="save-goal" class="btn">
-          <i class="fas fa-save"></i>
-          <span>Save Goal</span>
-        </button>
-      </div>
-      <div id="saved-goals"></div>
-    </div>
-
-    <div class="quotes">
-      <i class="fas fa-quote-left"></i>
-      <p id="quote"></p>
-      <i class="fas fa-quote-right"></i>
-    </div>
-
-    <div id="easter-egg" class="easter-egg">
-      <i class="fas fa-ghost"></i>
-    </div>
+    </main>
   </div>
 
   <script type="module" src="/main.js"></script>
 </body>
-  </html>
+</html>
